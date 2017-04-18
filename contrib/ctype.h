@@ -1,5 +1,5 @@
 /*  Custom ctype.h to overcome trouble with recent versions of Linux libc.a */
-
+#pragma once
 #ifdef NO_My_ctype
 #include <ctype.h>
 #else /*{*/
