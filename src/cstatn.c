@@ -14,7 +14,7 @@
 
 /* Common Block Declarations */
 
-struct {
+static struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
