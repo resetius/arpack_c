@@ -163,7 +163,7 @@ z_sin.c
 z_sqrt.c
 )
 
-add_definitions(-DSYSDEP_H_INCLUDED 
+add_definitions(-w -DSYSDEP_H_INCLUDED 
 	-DNO_TRUNCATE -DNON_UNIX_STDIO 
 	-DNON_POSIX_STDIO -DUSE_CLOCK
 	-DNO_ONEXIT -DNO_My_ctype -DNO_ISATTY
