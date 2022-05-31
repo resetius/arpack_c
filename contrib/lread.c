@@ -32,7 +32,7 @@ extern "C" {
 #ifdef KR_headers
 extern char *f__fmtbuf;
 #else
-extern const char *f__fmtbuf;
+extern char *f__fmtbuf;
 int (*f__lioproc)(ftnint*, char*, ftnlen, ftnint), (*l_getc)(void),
 	(*l_ungetc)(int,FILE*);
 #endif

@@ -75,12 +75,6 @@ zstatn.c
 
 add_library(arpack SHARED ${source} arpack.def)
 set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin")
-if (WIN32)
-	target_link_libraries(arpack arpack_util f2cembedded c:/inst/mkl/mkl_intel_lp64.lib c:/inst/mkl/mkl_tbb_thread.lib c:/inst/mkl/mkl_core.lib c:/inst/mkl/tbb.lib)
-elseif (APPLE)
-	target_link_libraries(arpack m arpack_util f2cembedded blas lapack)
-else ()
-	target_link_libraries(arpack m arpack_util f2cembedded)
-endif ()
 
-
+target_link_directories(arpack PRIVATE ${BLAS_LIBRARY_DIRS})
+target_link_libraries(arpack PRIVATE arpack_util f2cembedded ${BLAS_STATIC_LIBRARIES})
