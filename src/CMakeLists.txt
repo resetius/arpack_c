@@ -74,7 +74,6 @@ zstatn.c
 )
 
 add_library(arpack SHARED ${source} arpack.def)
-set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin")
 
 target_link_directories(arpack PRIVATE ${BLAS_LIBRARY_DIRS} ${LAPACK_LIBRARY_DIRS})
 target_link_libraries(arpack PRIVATE arpack_util f2cembedded ${BLAS_LIBRARIES} ${LAPACK_LIBRARIES})
