@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -361,45 +362,45 @@ static doublereal c_b64 = -1.;
     /* Subroutine */ int s_copy(char *, char *, ftnlen, ftnlen);
 
     /* Local variables */
-    static integer j, k, ih, jj, np;
-    static doublereal vl[1]	/* was [1][1] */;
-    static integer ibd, ldh, ldq, iri;
-    static doublereal sep;
-    static integer irr, wri, wrr;
+    ARPACK_TLS integer j, k, ih, jj, np;
+    ARPACK_TLS doublereal vl[1]	/* was [1][1] */;
+    ARPACK_TLS integer ibd, ldh, ldq, iri;
+    ARPACK_TLS doublereal sep;
+    ARPACK_TLS integer irr, wri, wrr;
     extern /* Subroutine */ int dger_(integer *, integer *, doublereal *, 
 	    doublereal *, integer *, doublereal *, integer *, doublereal *, 
 	    integer *);
-    static integer mode;
-    static doublereal eps23;
-    static integer ierr;
-    static doublereal temp;
-    static integer iwev;
-    static char type__[6];
+    ARPACK_TLS integer mode;
+    ARPACK_TLS doublereal eps23;
+    ARPACK_TLS integer ierr;
+    ARPACK_TLS doublereal temp;
+    ARPACK_TLS integer iwev;
+    ARPACK_TLS char type__[6];
     extern doublereal dnrm2_(integer *, doublereal *, integer *);
-    static doublereal temp1;
+    ARPACK_TLS doublereal temp1;
     extern /* Subroutine */ int dscal_(integer *, doublereal *, doublereal *, 
 	    integer *);
-    static integer ihbds, iconj;
+    ARPACK_TLS integer ihbds, iconj;
     extern /* Subroutine */ int dgemv_(char *, integer *, integer *, 
 	    doublereal *, doublereal *, integer *, doublereal *, integer *, 
 	    doublereal *, doublereal *, integer *, ftnlen);
-    static doublereal conds;
-    static logical reord;
+    ARPACK_TLS doublereal conds;
+    ARPACK_TLS logical reord;
     extern /* Subroutine */ int dcopy_(integer *, doublereal *, integer *, 
 	    doublereal *, integer *);
-    static integer nconv;
+    ARPACK_TLS integer nconv;
     extern /* Subroutine */ int dtrmm_(char *, char *, char *, char *, 
 	    integer *, integer *, doublereal *, doublereal *, integer *, 
 	    doublereal *, integer *, ftnlen, ftnlen, ftnlen, ftnlen), dmout_(
 	    integer *, integer *, integer *, doublereal *, integer *, integer 
 	    *, char *, ftnlen);
-    static integer iwork[1];
-    static doublereal rnorm;
-    static integer ritzi;
+    ARPACK_TLS integer iwork[1];
+    ARPACK_TLS doublereal rnorm;
+    ARPACK_TLS integer ritzi;
     extern /* Subroutine */ int dvout_(integer *, integer *, doublereal *, 
 	    integer *, char *, ftnlen), ivout_(integer *, integer *, integer *
 	    , integer *, char *, ftnlen);
-    static integer ritzr;
+    ARPACK_TLS integer ritzr;
     extern /* Subroutine */ int dgeqr2_(integer *, integer *, doublereal *, 
 	    integer *, doublereal *, doublereal *, integer *);
     extern doublereal dlapy2_(doublereal *, doublereal *);
@@ -407,7 +408,7 @@ static doublereal c_b64 = -1.;
 	    integer *, doublereal *, integer *, doublereal *, doublereal *, 
 	    integer *, doublereal *, integer *, ftnlen, ftnlen);
     extern doublereal dlamch_(char *, ftnlen);
-    static integer iheigi, iheigr, bounds, invsub, iuptri, msglvl, outncv, 
+    ARPACK_TLS integer iheigi, iheigr, bounds, invsub, iuptri, msglvl, outncv, 
 	    ishift, numcnv;
     extern /* Subroutine */ int dlacpy_(char *, integer *, integer *, 
 	    doublereal *, integer *, doublereal *, integer *, ftnlen), 

@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -176,7 +177,7 @@ static doublereal c_b20 = -1.;
 {
     /* Initialized data */
 
-    static logical first = TRUE_;
+    ARPACK_TLS logical first = TRUE_;
 
     /* System generated locals */
     integer h_dim1, h_offset, q_dim1, q_offset, v_dim1, v_offset, i__1, i__2, 
@@ -184,13 +185,13 @@ static doublereal c_b20 = -1.;
     doublereal d__1, d__2;
 
     /* Local variables */
-    static doublereal c__, f, g;
-    static integer i__, j;
-    static doublereal r__, s, a1, a2, a3, a4;
-    static real t0, t1;
-    static integer jj;
-    static doublereal big;
-    static integer iend, itop;
+    ARPACK_TLS doublereal c__, f, g;
+    ARPACK_TLS integer i__, j;
+    ARPACK_TLS doublereal r__, s, a1, a2, a3, a4;
+    ARPACK_TLS real t0, t1;
+    ARPACK_TLS integer jj;
+    ARPACK_TLS doublereal big;
+    ARPACK_TLS integer iend, itop;
     extern /* Subroutine */ int dscal_(integer *, doublereal *, doublereal *, 
 	    integer *), dgemv_(char *, integer *, integer *, doublereal *, 
 	    doublereal *, integer *, doublereal *, integer *, doublereal *, 
@@ -202,8 +203,8 @@ static doublereal c_b20 = -1.;
 	    ;
     extern doublereal dlamch_(char *, ftnlen);
     extern /* Subroutine */ int second_(real *);
-    static doublereal epsmch;
-    static integer istart, kplusp, msglvl;
+    ARPACK_TLS doublereal epsmch;
+    ARPACK_TLS integer istart, kplusp, msglvl;
     extern /* Subroutine */ int dlacpy_(char *, integer *, integer *, 
 	    doublereal *, integer *, doublereal *, integer *, ftnlen), 
 	    dlartg_(doublereal *, doublereal *, doublereal *, doublereal *, 

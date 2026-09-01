@@ -11,6 +11,7 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* \BeginDoc */
 
@@ -84,10 +85,10 @@
     double r_imag(complex *);
 
     /* Local variables */
-    static integer i__, j, igap;
-    static complex temp;
-    static real temp1, temp2;
-    extern doublereal slapy2_(real *, real *);
+    ARPACK_TLS integer i__, j, igap;
+    ARPACK_TLS complex temp;
+    ARPACK_TLS real temp1, temp2;
+    extern real slapy2_(real *, real *);
 
 
 /*     %------------------% */

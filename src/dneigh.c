@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -147,13 +148,13 @@ static doublereal c_b20 = 0.;
     doublereal d__1, d__2;
 
     /* Local variables */
-    static integer i__;
-    static real t0, t1;
-    static doublereal vl[1], temp;
+    ARPACK_TLS integer i__;
+    ARPACK_TLS real t0, t1;
+    ARPACK_TLS doublereal vl[1], temp;
     extern doublereal dnrm2_(integer *, doublereal *, integer *);
     extern /* Subroutine */ int dscal_(integer *, doublereal *, doublereal *, 
 	    integer *);
-    static integer iconj;
+    ARPACK_TLS integer iconj;
     extern /* Subroutine */ int dgemv_(char *, integer *, integer *, 
 	    doublereal *, doublereal *, integer *, doublereal *, integer *, 
 	    doublereal *, doublereal *, integer *, ftnlen), dmout_(integer *, 
@@ -164,8 +165,8 @@ static doublereal c_b20 = 0.;
     extern /* Subroutine */ int dlaqrb_(logical *, integer *, integer *, 
 	    integer *, doublereal *, integer *, doublereal *, doublereal *, 
 	    doublereal *, integer *), second_(real *);
-    static logical select[1];
-    static integer msglvl;
+    ARPACK_TLS logical select[1];
+    ARPACK_TLS integer msglvl;
     extern /* Subroutine */ int dlacpy_(char *, integer *, integer *, 
 	    doublereal *, integer *, doublereal *, integer *, ftnlen), 
 	    dtrevc_(char *, char *, logical *, integer *, doublereal *, 

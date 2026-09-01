@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -147,22 +148,22 @@ static integer c__1 = 1;
     real r__1;
 
     /* Local variables */
-    static integer j;
-    static real t0, t1;
-    static complex vl[1];
-    static real temp;
+    ARPACK_TLS integer j;
+    ARPACK_TLS real t0, t1;
+    ARPACK_TLS complex vl[1];
+    ARPACK_TLS real temp;
     extern /* Subroutine */ int ccopy_(integer *, complex *, integer *, 
 	    complex *, integer *), cmout_(integer *, integer *, integer *, 
 	    complex *, integer *, integer *, char *, ftnlen), cvout_(integer *
 	    , integer *, complex *, integer *, char *, ftnlen);
-    extern doublereal scnrm2_(integer *, complex *, integer *);
+    extern real scnrm2_(integer *, complex *, integer *);
     extern /* Subroutine */ int csscal_(integer *, real *, complex *, integer 
 	    *), clahqr_(logical *, logical *, integer *, integer *, integer *,
 	     complex *, integer *, complex *, integer *, integer *, complex *,
 	     integer *, integer *), clacpy_(char *, integer *, integer *, 
 	    complex *, integer *, complex *, integer *, ftnlen);
-    static logical select[1];
-    static integer msglvl;
+    ARPACK_TLS logical select[1];
+    ARPACK_TLS integer msglvl;
     extern /* Subroutine */ int ctrevc_(char *, char *, logical *, integer *, 
 	    complex *, integer *, complex *, integer *, complex *, integer *, 
 	    integer *, integer *, complex *, real *, integer *, ftnlen, 

@@ -11,6 +11,7 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Table of constant values */
 
@@ -94,8 +95,8 @@ static integer c__1 = 1;
     integer s_cmp(char *, char *, ftnlen, ftnlen);
 
     /* Local variables */
-    static integer i__, j, igap;
-    static real temp;
+    ARPACK_TLS integer i__, j, igap;
+    ARPACK_TLS real temp;
     extern /* Subroutine */ int sswap_(integer *, real *, integer *, real *, 
 	    integer *);
 

@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -361,46 +362,46 @@ static real c_b64 = -1.f;
     /* Subroutine */ int s_copy(char *, char *, ftnlen, ftnlen);
 
     /* Local variables */
-    static integer j, k, ih, jj, np;
-    static real vl[1]	/* was [1][1] */;
-    static integer ibd, ldh, ldq, iri;
-    static real sep;
-    static integer irr, wri, wrr, mode;
-    static real eps23;
+    ARPACK_TLS integer j, k, ih, jj, np;
+    ARPACK_TLS real vl[1]	/* was [1][1] */;
+    ARPACK_TLS integer ibd, ldh, ldq, iri;
+    ARPACK_TLS real sep;
+    ARPACK_TLS integer irr, wri, wrr, mode;
+    ARPACK_TLS real eps23;
     extern /* Subroutine */ int sger_(integer *, integer *, real *, real *, 
 	    integer *, real *, integer *, real *, integer *);
-    static integer ierr;
-    static real temp;
-    static integer iwev;
-    static char type__[6];
-    static real temp1;
-    extern doublereal snrm2_(integer *, real *, integer *);
-    static integer ihbds, iconj;
+    ARPACK_TLS integer ierr;
+    ARPACK_TLS real temp;
+    ARPACK_TLS integer iwev;
+    ARPACK_TLS char type__[6];
+    ARPACK_TLS real temp1;
+    extern real snrm2_(integer *, real *, integer *);
+    ARPACK_TLS integer ihbds, iconj;
     extern /* Subroutine */ int sscal_(integer *, real *, real *, integer *);
-    static real conds;
-    static logical reord;
+    ARPACK_TLS real conds;
+    ARPACK_TLS logical reord;
     extern /* Subroutine */ int sgemv_(char *, integer *, integer *, real *, 
 	    real *, integer *, real *, integer *, real *, real *, integer *, 
 	    ftnlen);
-    static integer nconv, iwork[1];
-    static real rnorm;
+    ARPACK_TLS integer nconv, iwork[1];
+    ARPACK_TLS real rnorm;
     extern /* Subroutine */ int scopy_(integer *, real *, integer *, real *, 
 	    integer *);
-    static integer ritzi;
+    ARPACK_TLS integer ritzi;
     extern /* Subroutine */ int strmm_(char *, char *, char *, char *, 
 	    integer *, integer *, real *, real *, integer *, real *, integer *
 	    , ftnlen, ftnlen, ftnlen, ftnlen), ivout_(integer *, integer *, 
 	    integer *, integer *, char *, ftnlen), smout_(integer *, integer *
 	    , integer *, real *, integer *, integer *, char *, ftnlen);
-    static integer ritzr;
+    ARPACK_TLS integer ritzr;
     extern /* Subroutine */ int svout_(integer *, integer *, real *, integer *
 	    , char *, ftnlen), sgeqr2_(integer *, integer *, real *, integer *
 	    , real *, real *, integer *);
-    extern doublereal slapy2_(real *, real *);
+    extern real slapy2_(real *, real *);
     extern /* Subroutine */ int sorm2r_(char *, char *, integer *, integer *, 
 	    integer *, real *, integer *, real *, real *, integer *, real *, 
 	    integer *, ftnlen, ftnlen);
-    static integer iheigi, iheigr, bounds, invsub, iuptri, msglvl, outncv, 
+    ARPACK_TLS integer iheigi, iheigr, bounds, invsub, iuptri, msglvl, outncv, 
 	    ishift, numcnv;
     extern /* Subroutine */ int slacpy_(char *, integer *, integer *, real *, 
 	    integer *, real *, integer *, ftnlen), slahqr_(logical *, logical 
@@ -413,7 +414,7 @@ static real c_b64 = -1.f;
 	    char *, logical *, integer *, real *, integer *, real *, integer *
 	    , real *, real *, integer *, real *, real *, real *, integer *, 
 	    integer *, integer *, integer *, ftnlen, ftnlen);
-    extern doublereal slamch_(char *, ftnlen);
+    extern real slamch_(char *, ftnlen);
     extern /* Subroutine */ int sngets_(integer *, char *, integer *, integer 
 	    *, real *, real *, real *, real *, real *, ftnlen);
 

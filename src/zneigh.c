@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -148,18 +149,18 @@ static integer c__1 = 1;
     doublereal d__1;
 
     /* Local variables */
-    static integer j;
-    static real t0, t1;
-    static doublecomplex vl[1];
-    static doublereal temp;
+    ARPACK_TLS integer j;
+    ARPACK_TLS real t0, t1;
+    ARPACK_TLS doublecomplex vl[1];
+    ARPACK_TLS doublereal temp;
     extern /* Subroutine */ int zcopy_(integer *, doublecomplex *, integer *, 
 	    doublecomplex *, integer *), zmout_(integer *, integer *, integer 
 	    *, doublecomplex *, integer *, integer *, char *, ftnlen), zvout_(
 	    integer *, integer *, doublecomplex *, integer *, char *, ftnlen);
     extern doublereal dznrm2_(integer *, doublecomplex *, integer *);
     extern /* Subroutine */ int second_(real *);
-    static logical select[1];
-    static integer msglvl;
+    ARPACK_TLS logical select[1];
+    ARPACK_TLS integer msglvl;
     extern /* Subroutine */ int zlacpy_(char *, integer *, integer *, 
 	    doublecomplex *, integer *, doublecomplex *, integer *, ftnlen), 
 	    zlahqr_(logical *, logical *, integer *, integer *, integer *, 

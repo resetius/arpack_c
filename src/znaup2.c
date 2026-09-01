@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -229,18 +230,18 @@ static integer c__2 = 2;
     double sqrt(doublereal);
 
     /* Local variables */
-    static integer i__, j;
-    static real t0, t1, t2, t3;
-    static integer kp[3], np0, nev0;
-    static doublereal eps23;
-    static integer ierr, iter;
-    static logical getv0, cnorm;
-    static integer nconv;
+    ARPACK_TLS integer i__, j;
+    ARPACK_TLS real t0, t1, t2, t3;
+    ARPACK_TLS integer kp[3], np0, nev0;
+    ARPACK_TLS doublereal eps23;
+    ARPACK_TLS integer ierr, iter;
+    ARPACK_TLS logical getv0, cnorm;
+    ARPACK_TLS integer nconv;
     extern /* Double Complex */ VOID zdotc_(doublecomplex *, integer *, 
 	    doublecomplex *, integer *, doublecomplex *, integer *);
-    static doublereal rtemp;
-    static logical initv;
-    static doublereal rnorm;
+    ARPACK_TLS doublereal rtemp;
+    ARPACK_TLS logical initv;
+    ARPACK_TLS doublereal rnorm;
     extern /* Subroutine */ int dvout_(integer *, integer *, doublereal *, 
 	    integer *, char *, ftnlen), zcopy_(integer *, doublecomplex *, 
 	    integer *, doublecomplex *, integer *), ivout_(integer *, integer 
@@ -255,11 +256,11 @@ static integer c__2 = 2;
 	    doublecomplex *, doublereal *, integer *, doublecomplex *, 
 	    integer *, ftnlen);
     extern doublereal dlamch_(char *, ftnlen);
-    static integer nevbef;
+    ARPACK_TLS integer nevbef;
     extern /* Subroutine */ int second_(real *);
-    static logical update, ushift;
-    static integer kplusp, msglvl, nptemp;
-    static char wprime[2];
+    ARPACK_TLS logical update, ushift;
+    ARPACK_TLS integer kplusp, msglvl, nptemp;
+    ARPACK_TLS char wprime[2];
     extern /* Subroutine */ int znaitr_(integer *, char *, integer *, integer 
 	    *, integer *, integer *, doublecomplex *, doublereal *, 
 	    doublecomplex *, integer *, doublecomplex *, integer *, integer *,
@@ -273,7 +274,7 @@ static integer c__2 = 2;
 	    doublecomplex *, integer *, doublecomplex *, doublecomplex *), 
 	    zsortc_(char *, logical *, integer *, doublecomplex *, 
 	    doublecomplex *, ftnlen);
-    static doublecomplex cmpnorm;
+    ARPACK_TLS doublecomplex cmpnorm;
 
 
 /*     %----------------------------------------------------% */

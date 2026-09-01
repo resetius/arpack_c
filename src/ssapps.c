@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -175,7 +176,7 @@ static real c_b20 = -1.f;
 {
     /* Initialized data */
 
-    static logical first = TRUE_;
+    ARPACK_TLS logical first = TRUE_;
 
     /* System generated locals */
     integer h_dim1, h_offset, q_dim1, q_offset, v_dim1, v_offset, i__1, i__2, 
@@ -183,12 +184,12 @@ static real c_b20 = -1.f;
     real r__1, r__2;
 
     /* Local variables */
-    static real c__, f, g;
-    static integer i__, j;
-    static real r__, s, a1, a2, a3, a4, t0, t1;
-    static integer jj;
-    static real big;
-    static integer iend, itop;
+    ARPACK_TLS real c__, f, g;
+    ARPACK_TLS integer i__, j;
+    ARPACK_TLS real r__, s, a1, a2, a3, a4, t0, t1;
+    ARPACK_TLS integer jj;
+    ARPACK_TLS real big;
+    ARPACK_TLS integer iend, itop;
     extern /* Subroutine */ int sscal_(integer *, real *, real *, integer *), 
 	    sgemv_(char *, integer *, integer *, real *, real *, integer *, 
 	    real *, integer *, real *, real *, integer *, ftnlen), scopy_(
@@ -196,10 +197,10 @@ static real c_b20 = -1.f;
 	    , real *, real *, integer *, real *, integer *), ivout_(integer *,
 	     integer *, integer *, integer *, char *, ftnlen), svout_(integer 
 	    *, integer *, real *, integer *, char *, ftnlen);
-    extern doublereal slamch_(char *, ftnlen);
+    extern real slamch_(char *, ftnlen);
     extern /* Subroutine */ int second_(real *);
-    static real epsmch;
-    static integer istart, kplusp, msglvl;
+    ARPACK_TLS real epsmch;
+    ARPACK_TLS integer istart, kplusp, msglvl;
     extern /* Subroutine */ int slacpy_(char *, integer *, integer *, real *, 
 	    integer *, real *, integer *, ftnlen), slartg_(real *, real *, 
 	    real *, real *, real *), slaset_(char *, integer *, integer *, 

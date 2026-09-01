@@ -11,6 +11,7 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Table of constant values */
 
@@ -133,39 +134,39 @@ static doublereal c_b31 = 1.;
     double sqrt(doublereal), d_sign(doublereal *, doublereal *);
 
     /* Local variables */
-    static doublereal b, c__, f, g;
-    static integer i__, j, k, l, m;
-    static doublereal p, r__, s;
-    static integer l1, ii, mm, lm1, mm1, nm1;
-    static doublereal rt1, rt2, eps;
-    static integer lsv;
-    static doublereal tst, eps2;
-    static integer lend, jtot;
+    ARPACK_TLS doublereal b, c__, f, g;
+    ARPACK_TLS integer i__, j, k, l, m;
+    ARPACK_TLS doublereal p, r__, s;
+    ARPACK_TLS integer l1, ii, mm, lm1, mm1, nm1;
+    ARPACK_TLS doublereal rt1, rt2, eps;
+    ARPACK_TLS integer lsv;
+    ARPACK_TLS doublereal tst, eps2;
+    ARPACK_TLS integer lend, jtot;
     extern /* Subroutine */ int dlae2_(doublereal *, doublereal *, doublereal 
 	    *, doublereal *, doublereal *), dlasr_(char *, char *, char *, 
 	    integer *, integer *, doublereal *, doublereal *, doublereal *, 
 	    integer *, ftnlen, ftnlen, ftnlen);
-    static doublereal anorm;
+    ARPACK_TLS doublereal anorm;
     extern /* Subroutine */ int dlaev2_(doublereal *, doublereal *, 
 	    doublereal *, doublereal *, doublereal *, doublereal *, 
 	    doublereal *);
-    static integer lendm1, lendp1;
+    ARPACK_TLS integer lendm1, lendp1;
     extern doublereal dlapy2_(doublereal *, doublereal *), dlamch_(char *, 
 	    ftnlen);
-    static integer iscale;
+    ARPACK_TLS integer iscale;
     extern /* Subroutine */ int dlascl_(char *, integer *, integer *, 
 	    doublereal *, doublereal *, integer *, integer *, doublereal *, 
 	    integer *, integer *, ftnlen);
-    static doublereal safmin;
+    ARPACK_TLS doublereal safmin;
     extern /* Subroutine */ int dlartg_(doublereal *, doublereal *, 
 	    doublereal *, doublereal *, doublereal *);
-    static doublereal safmax;
+    ARPACK_TLS doublereal safmax;
     extern doublereal dlanst_(char *, integer *, doublereal *, doublereal *, 
 	    ftnlen);
     extern /* Subroutine */ int dlasrt_(char *, integer *, doublereal *, 
 	    integer *, ftnlen);
-    static integer lendsv, nmaxit, icompz;
-    static doublereal ssfmax, ssfmin;
+    ARPACK_TLS integer lendsv, nmaxit, icompz;
+    ARPACK_TLS doublereal ssfmax, ssfmin;
 
 
 /*     %------------------% */

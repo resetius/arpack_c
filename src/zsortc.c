@@ -11,6 +11,7 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* \BeginDoc */
 
@@ -84,9 +85,9 @@
     double d_imag(doublecomplex *);
 
     /* Local variables */
-    static integer i__, j, igap;
-    static doublecomplex temp;
-    static doublereal temp1, temp2;
+    ARPACK_TLS integer i__, j, igap;
+    ARPACK_TLS doublecomplex temp;
+    ARPACK_TLS doublereal temp1, temp2;
     extern doublereal dlapy2_(doublereal *, doublereal *);
 
 

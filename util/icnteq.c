@@ -11,6 +11,7 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 
 /* ----------------------------------------------------------------------- */
@@ -23,7 +24,7 @@ integer icnteq_(integer *n, integer *array, integer *value)
     integer ret_val, i__1;
 
     /* Local variables */
-    static integer i__, k;
+    ARPACK_TLS integer i__, k;
 
 
 

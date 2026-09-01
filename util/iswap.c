@@ -11,6 +11,7 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Subroutine */ int iswap_(integer *n, integer *sx, integer *incx, integer *
 	sy, integer *incy)
@@ -19,7 +20,7 @@
     integer i__1;
 
     /* Local variables */
-    static integer i__, m, ix, iy, mp1, stemp;
+    ARPACK_TLS integer i__, m, ix, iy, mp1, stemp;
 
 
 /*     interchanges two vectors. */

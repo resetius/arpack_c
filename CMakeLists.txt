@@ -6,7 +6,7 @@ if (NOT ${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
     set(ARPACK_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/src PARENT_SCOPE)
 endif ()
 
-include_directories(contrib)
+include_directories(contrib src)
 add_subdirectory(contrib)
 add_subdirectory(util)
 add_subdirectory(src)

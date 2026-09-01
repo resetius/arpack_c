@@ -11,12 +11,13 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Subroutine */ int second_(real *t)
 {
-    static real t1;
+    ARPACK_TLS real t1;
     extern doublereal etime_(real *);
-    static real tarray[2];
+    ARPACK_TLS real tarray[2];
 
 
 

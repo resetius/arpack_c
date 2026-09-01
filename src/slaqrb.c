@@ -11,6 +11,7 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Table of constant values */
 
@@ -134,28 +135,28 @@ static integer c__1 = 1;
     real r__1, r__2;
 
     /* Local variables */
-    static integer i__, j, k, l, m;
-    static real s, v[3];
-    static integer i1, i2;
-    static real t1, t2, t3, v1, v2, v3, h00, h10, h11, h12, h21, h22, h33, 
+    ARPACK_TLS integer i__, j, k, l, m;
+    ARPACK_TLS real s, v[3];
+    ARPACK_TLS integer i1, i2;
+    ARPACK_TLS real t1, t2, t3, v1, v2, v3, h00, h10, h11, h12, h21, h22, h33, 
 	    h44;
-    static integer nh;
-    static real cs;
-    static integer nr;
-    static real sn, h33s, h44s;
-    static integer itn, its;
-    static real ulp, sum, tst1, h43h34, unfl, ovfl, work[1];
+    ARPACK_TLS integer nh;
+    ARPACK_TLS real cs;
+    ARPACK_TLS integer nr;
+    ARPACK_TLS real sn, h33s, h44s;
+    ARPACK_TLS integer itn, its;
+    ARPACK_TLS real ulp, sum, tst1, h43h34, unfl, ovfl, work[1];
     extern /* Subroutine */ int srot_(integer *, real *, integer *, real *, 
 	    integer *, real *, real *), scopy_(integer *, real *, integer *, 
 	    real *, integer *), slanv2_(real *, real *, real *, real *, real *
 	    , real *, real *, real *, real *, real *), slabad_(real *, real *)
 	    ;
-    extern doublereal slamch_(char *, ftnlen);
+    extern real slamch_(char *, ftnlen);
     extern /* Subroutine */ int slarfg_(integer *, real *, real *, integer *, 
 	    real *);
-    extern doublereal slanhs_(char *, integer *, real *, integer *, real *, 
+    extern real slanhs_(char *, integer *, real *, integer *, real *, 
 	    ftnlen);
-    static real smlnum;
+    ARPACK_TLS real smlnum;
 
 
 /*     %------------------% */

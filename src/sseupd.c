@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -273,33 +274,33 @@ static real c_b110 = 1.f;
     double pow_dd(doublereal *, doublereal *);
 
     /* Local variables */
-    static integer j, k, ih, jj, iq, np, iw, ibd, ihb, ihd, ldh, ldq, irz, 
+    ARPACK_TLS integer j, k, ih, jj, iq, np, iw, ibd, ihb, ihd, ldh, ldq, irz, 
 	    mode;
-    static real eps23;
+    ARPACK_TLS real eps23;
     extern /* Subroutine */ int sger_(integer *, integer *, real *, real *, 
 	    integer *, real *, integer *, real *, integer *);
-    static integer ierr;
-    static real temp;
-    static integer next;
-    static char type__[6];
-    static integer ritz;
-    static real temp1;
-    extern doublereal snrm2_(integer *, real *, integer *);
+    ARPACK_TLS integer ierr;
+    ARPACK_TLS real temp;
+    ARPACK_TLS integer next;
+    ARPACK_TLS char type__[6];
+    ARPACK_TLS integer ritz;
+    ARPACK_TLS real temp1;
+    extern real snrm2_(integer *, real *, integer *);
     extern /* Subroutine */ int sscal_(integer *, real *, real *, integer *);
-    static logical reord;
-    static integer nconv;
-    static real rnorm;
+    ARPACK_TLS logical reord;
+    ARPACK_TLS integer nconv;
+    ARPACK_TLS real rnorm;
     extern /* Subroutine */ int scopy_(integer *, real *, integer *, real *, 
 	    integer *), ivout_(integer *, integer *, integer *, integer *, 
 	    char *, ftnlen), svout_(integer *, integer *, real *, integer *, 
 	    char *, ftnlen);
-    static real bnorm2;
+    ARPACK_TLS real bnorm2;
     extern /* Subroutine */ int sgeqr2_(integer *, integer *, real *, integer 
 	    *, real *, real *, integer *), sorm2r_(char *, char *, integer *, 
 	    integer *, integer *, real *, integer *, real *, real *, integer *
 	    , real *, integer *, ftnlen, ftnlen);
-    extern doublereal slamch_(char *, ftnlen);
-    static integer bounds, msglvl, ishift, numcnv;
+    extern real slamch_(char *, ftnlen);
+    ARPACK_TLS integer bounds, msglvl, ishift, numcnv;
     extern /* Subroutine */ int slacpy_(char *, integer *, integer *, real *, 
 	    integer *, real *, integer *, ftnlen), ssesrt_(char *, logical *, 
 	    integer *, real *, integer *, real *, integer *, ftnlen), ssteqr_(
@@ -307,7 +308,7 @@ static real c_b110 = 1.f;
 	    integer *, ftnlen), ssortr_(char *, logical *, integer *, real *, 
 	    real *, ftnlen), ssgets_(integer *, char *, integer *, integer *, 
 	    real *, real *, real *, ftnlen);
-    static integer leftptr, rghtptr;
+    ARPACK_TLS integer leftptr, rghtptr;
 
 
 /*     %----------------------------------------------------% */

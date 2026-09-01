@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -164,7 +165,7 @@ static real c_b29 = -1.f;
 {
     /* Initialized data */
 
-    static logical inits = TRUE_;
+    ARPACK_TLS logical inits = TRUE_;
 
     /* System generated locals */
     integer v_dim1, v_offset, i__1;
@@ -173,22 +174,22 @@ static real c_b29 = -1.f;
     double sqrt(doublereal);
 
     /* Local variables */
-    static real t0, t1, t2, t3;
-    static integer jj, iter;
-    extern doublereal sdot_(integer *, real *, integer *, real *, integer *);
-    static logical orth;
-    extern doublereal snrm2_(integer *, real *, integer *);
-    static integer iseed[4], idist;
+    ARPACK_TLS real t0, t1, t2, t3;
+    ARPACK_TLS integer jj, iter;
+    extern real sdot_(integer *, real *, integer *, real *, integer *);
+    ARPACK_TLS logical orth;
+    extern real snrm2_(integer *, real *, integer *);
+    ARPACK_TLS integer iseed[4], idist;
     extern /* Subroutine */ int sgemv_(char *, integer *, integer *, real *, 
 	    real *, integer *, real *, integer *, real *, real *, integer *, 
 	    ftnlen);
-    static logical first;
+    ARPACK_TLS logical first;
     extern /* Subroutine */ int scopy_(integer *, real *, integer *, real *, 
 	    integer *), svout_(integer *, integer *, real *, integer *, char *
 	    , ftnlen);
-    static real rnorm0;
+    ARPACK_TLS real rnorm0;
     extern /* Subroutine */ int second_(real *);
-    static integer msglvl;
+    ARPACK_TLS integer msglvl;
     extern /* Subroutine */ int slarnv_(integer *, integer *, integer *, real 
 	    *);
 

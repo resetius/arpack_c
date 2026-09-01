@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -188,7 +189,7 @@ static doublereal c_b43 = -1.;
 {
     /* Initialized data */
 
-    static logical first = TRUE_;
+    ARPACK_TLS logical first = TRUE_;
 
     /* System generated locals */
     integer h_dim1, h_offset, v_dim1, v_offset, q_dim1, q_offset, i__1, i__2, 
@@ -196,20 +197,20 @@ static doublereal c_b43 = -1.;
     doublereal d__1, d__2;
 
     /* Local variables */
-    static doublereal c__, f, g;
-    static integer i__, j;
-    static doublereal r__, s, t, u[3];
-    static real t0, t1;
-    static doublereal h11, h12, h21, h22, h32;
-    static integer jj, ir, nr;
-    static doublereal tau, ulp, tst1;
-    static integer iend;
-    static doublereal unfl, ovfl;
+    ARPACK_TLS doublereal c__, f, g;
+    ARPACK_TLS integer i__, j;
+    ARPACK_TLS doublereal r__, s, t, u[3];
+    ARPACK_TLS real t0, t1;
+    ARPACK_TLS doublereal h11, h12, h21, h22, h32;
+    ARPACK_TLS integer jj, ir, nr;
+    ARPACK_TLS doublereal tau, ulp, tst1;
+    ARPACK_TLS integer iend;
+    ARPACK_TLS doublereal unfl, ovfl;
     extern /* Subroutine */ int dscal_(integer *, doublereal *, doublereal *, 
 	    integer *), dlarf_(char *, integer *, integer *, doublereal *, 
 	    integer *, doublereal *, doublereal *, integer *, doublereal *, 
 	    ftnlen);
-    static logical cconj;
+    ARPACK_TLS logical cconj;
     extern /* Subroutine */ int dgemv_(char *, integer *, integer *, 
 	    doublereal *, doublereal *, integer *, doublereal *, integer *, 
 	    doublereal *, doublereal *, integer *, ftnlen), dcopy_(integer *, 
@@ -224,10 +225,10 @@ static doublereal c_b43 = -1.;
     extern doublereal dlamch_(char *, ftnlen);
     extern /* Subroutine */ int dlarfg_(integer *, doublereal *, doublereal *,
 	     integer *, doublereal *);
-    static doublereal sigmai;
+    ARPACK_TLS doublereal sigmai;
     extern /* Subroutine */ int second_(real *);
-    static integer istart, kplusp, msglvl;
-    static doublereal sigmar, smlnum;
+    ARPACK_TLS integer istart, kplusp, msglvl;
+    ARPACK_TLS doublereal sigmar, smlnum;
     extern /* Subroutine */ int dlacpy_(char *, integer *, integer *, 
 	    doublereal *, integer *, doublereal *, integer *, ftnlen), 
 	    dlaset_(char *, integer *, integer *, doublereal *, doublereal *, 

@@ -11,6 +11,7 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* ----------------------------------------------------------------------- */
 /* \BeginDoc */
@@ -88,9 +89,9 @@
     integer s_cmp(char *, char *, ftnlen, ftnlen);
 
     /* Local variables */
-    static integer i__, j, igap;
-    static real temp, temp1, temp2;
-    extern doublereal slapy2_(real *, real *);
+    ARPACK_TLS integer i__, j, igap;
+    ARPACK_TLS real temp, temp1, temp2;
+    extern real slapy2_(real *, real *);
 
 
 /*     %------------------% */

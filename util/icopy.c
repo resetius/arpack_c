@@ -11,6 +11,7 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* -------------------------------------------------------------------- */
 /* \Documentation */
@@ -52,7 +53,7 @@
     integer i__1;
 
     /* Local variables */
-    static integer i__, ix, iy;
+    ARPACK_TLS integer i__, ix, iy;
 
 
 /*     ---------------------------- */

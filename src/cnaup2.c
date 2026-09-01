@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -230,40 +231,40 @@ static integer c__2 = 2;
     double sqrt(doublereal);
 
     /* Local variables */
-    static integer i__, j;
-    static real t0, t1, t2, t3;
-    static integer kp[3], np0, nev0;
-    static real eps23;
-    static integer ierr, iter;
-    static logical getv0;
+    ARPACK_TLS integer i__, j;
+    ARPACK_TLS real t0, t1, t2, t3;
+    ARPACK_TLS integer kp[3], np0, nev0;
+    ARPACK_TLS real eps23;
+    ARPACK_TLS integer ierr, iter;
+    ARPACK_TLS logical getv0;
     extern /* Complex */ VOID cdotc_(complex *, integer *, complex *, integer 
 	    *, complex *, integer *);
     extern /* Subroutine */ int ccopy_(integer *, complex *, integer *, 
 	    complex *, integer *);
-    static logical cnorm;
-    static integer nconv;
-    static real rtemp;
+    ARPACK_TLS logical cnorm;
+    ARPACK_TLS integer nconv;
+    ARPACK_TLS real rtemp;
     extern /* Subroutine */ int cmout_(integer *, integer *, integer *, 
 	    complex *, integer *, integer *, char *, ftnlen);
-    static logical initv;
-    static real rnorm;
+    ARPACK_TLS logical initv;
+    ARPACK_TLS real rnorm;
     extern /* Subroutine */ int cvout_(integer *, integer *, complex *, 
 	    integer *, char *, ftnlen), ivout_(integer *, integer *, integer *
 	    , integer *, char *, ftnlen), svout_(integer *, integer *, real *,
 	     integer *, char *, ftnlen), cgetv0_(integer *, char *, integer *,
 	     logical *, integer *, integer *, complex *, integer *, complex *,
 	     real *, integer *, complex *, integer *, ftnlen);
-    extern doublereal scnrm2_(integer *, complex *, integer *), slapy2_(real *
+    extern real scnrm2_(integer *, complex *, integer *), slapy2_(real *
 	    , real *);
     extern /* Subroutine */ int cneigh_(real *, integer *, complex *, integer 
 	    *, complex *, complex *, complex *, integer *, complex *, real *, 
 	    integer *);
-    static integer nevbef;
-    extern doublereal slamch_(char *, ftnlen);
+    ARPACK_TLS integer nevbef;
+    extern real slamch_(char *, ftnlen);
     extern /* Subroutine */ int second_(real *);
-    static logical update, ushift;
-    static integer kplusp, msglvl, nptemp;
-    static char wprime[2];
+    ARPACK_TLS logical update, ushift;
+    ARPACK_TLS integer kplusp, msglvl, nptemp;
+    ARPACK_TLS char wprime[2];
     extern /* Subroutine */ int cnaitr_(integer *, char *, integer *, integer 
 	    *, integer *, integer *, complex *, real *, complex *, integer *, 
 	    complex *, integer *, integer *, complex *, integer *, ftnlen), 
@@ -272,7 +273,7 @@ static integer c__2 = 2;
 	    complex *, complex *, integer *, complex *, integer *, complex *, 
 	    complex *, integer *, complex *, complex *), csortc_(char *, 
 	    logical *, integer *, complex *, complex *, ftnlen);
-    static complex cmpnorm;
+    ARPACK_TLS complex cmpnorm;
 
 
 /*     %----------------------------------------------------% */

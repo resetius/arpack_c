@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -147,20 +148,20 @@ static real c_b20 = 0.f;
     real r__1, r__2;
 
     /* Local variables */
-    static integer i__;
-    static real t0, t1, vl[1], temp;
-    extern doublereal snrm2_(integer *, real *, integer *);
-    static integer iconj;
+    ARPACK_TLS integer i__;
+    ARPACK_TLS real t0, t1, vl[1], temp;
+    extern real snrm2_(integer *, real *, integer *);
+    ARPACK_TLS integer iconj;
     extern /* Subroutine */ int sscal_(integer *, real *, real *, integer *), 
 	    sgemv_(char *, integer *, integer *, real *, real *, integer *, 
 	    real *, integer *, real *, real *, integer *, ftnlen), smout_(
 	    integer *, integer *, integer *, real *, integer *, integer *, 
 	    char *, ftnlen), svout_(integer *, integer *, real *, integer *, 
 	    char *, ftnlen);
-    extern doublereal slapy2_(real *, real *);
+    extern real slapy2_(real *, real *);
     extern /* Subroutine */ int second_(real *);
-    static logical select[1];
-    static integer msglvl;
+    ARPACK_TLS logical select[1];
+    ARPACK_TLS integer msglvl;
     extern /* Subroutine */ int slacpy_(char *, integer *, integer *, real *, 
 	    integer *, real *, integer *, ftnlen), slaqrb_(logical *, integer 
 	    *, integer *, integer *, real *, integer *, real *, real *, real *

@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -159,7 +160,7 @@ static integer c__1 = 1;
 {
     /* Initialized data */
 
-    static logical inits = TRUE_;
+    ARPACK_TLS logical inits = TRUE_;
 
     /* System generated locals */
     integer v_dim1, v_offset, i__1, i__2;
@@ -170,14 +171,14 @@ static integer c__1 = 1;
     double d_imag(doublecomplex *), sqrt(doublereal);
 
     /* Local variables */
-    static real t0, t1, t2, t3;
-    static integer jj, iter;
-    static logical orth;
-    static integer iseed[4], idist;
-    static doublecomplex cnorm;
+    ARPACK_TLS real t0, t1, t2, t3;
+    ARPACK_TLS integer jj, iter;
+    ARPACK_TLS logical orth;
+    ARPACK_TLS integer iseed[4], idist;
+    ARPACK_TLS doublecomplex cnorm;
     extern /* Double Complex */ VOID zdotc_(doublecomplex *, integer *, 
 	    doublecomplex *, integer *, doublecomplex *, integer *);
-    static logical first;
+    ARPACK_TLS logical first;
     extern /* Subroutine */ int zgemv_(char *, integer *, integer *, 
 	    doublecomplex *, doublecomplex *, integer *, doublecomplex *, 
 	    integer *, doublecomplex *, doublecomplex *, integer *, ftnlen), 
@@ -187,9 +188,9 @@ static integer c__1 = 1;
 	    doublecomplex *, integer *, char *, ftnlen);
     extern doublereal dlapy2_(doublereal *, doublereal *), dznrm2_(integer *, 
 	    doublecomplex *, integer *);
-    static doublereal rnorm0;
+    ARPACK_TLS doublereal rnorm0;
     extern /* Subroutine */ int second_(real *);
-    static integer msglvl;
+    ARPACK_TLS integer msglvl;
     extern /* Subroutine */ int zlarnv_(integer *, integer *, integer *, 
 	    doublecomplex *);
 

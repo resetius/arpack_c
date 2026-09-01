@@ -11,6 +11,7 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Table of constant values */
 
@@ -133,37 +134,37 @@ static real c_b31 = 1.f;
     double sqrt(doublereal), r_sign(real *, real *);
 
     /* Local variables */
-    static real b, c__, f, g;
-    static integer i__, j, k, l, m;
-    static real p, r__, s;
-    static integer l1, ii, mm, lm1, mm1, nm1;
-    static real rt1, rt2, eps;
-    static integer lsv;
-    static real tst, eps2;
-    static integer lend, jtot;
+    ARPACK_TLS real b, c__, f, g;
+    ARPACK_TLS integer i__, j, k, l, m;
+    ARPACK_TLS real p, r__, s;
+    ARPACK_TLS integer l1, ii, mm, lm1, mm1, nm1;
+    ARPACK_TLS real rt1, rt2, eps;
+    ARPACK_TLS integer lsv;
+    ARPACK_TLS real tst, eps2;
+    ARPACK_TLS integer lend, jtot;
     extern /* Subroutine */ int slae2_(real *, real *, real *, real *, real *)
 	    ;
-    static real anorm;
+    ARPACK_TLS real anorm;
     extern /* Subroutine */ int slasr_(char *, char *, char *, integer *, 
 	    integer *, real *, real *, real *, integer *, ftnlen, ftnlen, 
 	    ftnlen);
-    static integer lendm1, lendp1;
+    ARPACK_TLS integer lendm1, lendp1;
     extern /* Subroutine */ int slaev2_(real *, real *, real *, real *, real *
 	    , real *, real *);
-    extern doublereal slapy2_(real *, real *);
-    static integer iscale;
-    extern doublereal slamch_(char *, ftnlen);
-    static real safmin, safmax;
+    extern real slapy2_(real *, real *);
+    ARPACK_TLS integer iscale;
+    extern real slamch_(char *, ftnlen);
+    ARPACK_TLS real safmin, safmax;
     extern /* Subroutine */ int slascl_(char *, integer *, integer *, real *, 
 	    real *, integer *, integer *, real *, integer *, integer *, 
 	    ftnlen);
-    static integer lendsv;
+    ARPACK_TLS integer lendsv;
     extern /* Subroutine */ int slartg_(real *, real *, real *, real *, real *
 	    );
-    static real ssfmin;
-    static integer nmaxit, icompz;
-    static real ssfmax;
-    extern doublereal slanst_(char *, integer *, real *, real *, ftnlen);
+    ARPACK_TLS real ssfmin;
+    ARPACK_TLS integer nmaxit, icompz;
+    ARPACK_TLS real ssfmax;
+    extern real slanst_(char *, integer *, real *, real *, ftnlen);
     extern /* Subroutine */ int slasrt_(char *, integer *, real *, integer *, 
 	    ftnlen);
 

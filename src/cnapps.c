@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -177,7 +178,7 @@ static integer c__1 = 1;
 {
     /* Initialized data */
 
-    static logical first = TRUE_;
+    ARPACK_TLS logical first = TRUE_;
 
     /* System generated locals */
     integer h_dim1, h_offset, v_dim1, v_offset, q_dim1, q_offset, i__1, i__2, 
@@ -190,19 +191,19 @@ static integer c__1 = 1;
     void r_cnjg(complex *, complex *);
 
     /* Local variables */
-    static real c__;
-    static complex f, g;
-    static integer i__, j;
-    static complex r__, s, t;
-    static real t0, t1;
-    static complex h11, h21;
-    static integer jj;
-    static real ulp, tst1;
-    static integer iend;
-    static real unfl, ovfl;
+    ARPACK_TLS real c__;
+    ARPACK_TLS complex f, g;
+    ARPACK_TLS integer i__, j;
+    ARPACK_TLS complex r__, s, t;
+    ARPACK_TLS real t0, t1;
+    ARPACK_TLS complex h11, h21;
+    ARPACK_TLS integer jj;
+    ARPACK_TLS real ulp, tst1;
+    ARPACK_TLS integer iend;
+    ARPACK_TLS real unfl, ovfl;
     extern /* Subroutine */ int cscal_(integer *, complex *, complex *, 
 	    integer *);
-    static complex sigma;
+    ARPACK_TLS complex sigma;
     extern /* Subroutine */ int cgemv_(char *, integer *, integer *, complex *
 	    , complex *, integer *, complex *, integer *, complex *, complex *
 	    , integer *, ftnlen), ccopy_(integer *, complex *, integer *, 
@@ -212,14 +213,14 @@ static integer c__1 = 1;
 	    cvout_(integer *, integer *, complex *, integer *, char *, ftnlen)
 	    , ivout_(integer *, integer *, integer *, integer *, char *, 
 	    ftnlen);
-    extern doublereal slapy2_(real *, real *);
+    extern real slapy2_(real *, real *);
     extern /* Subroutine */ int slabad_(real *, real *);
-    extern doublereal clanhs_(char *, integer *, complex *, integer *, 
+    extern real clanhs_(char *, integer *, complex *, integer *, 
 	    complex *, ftnlen), slamch_(char *, ftnlen);
     extern /* Subroutine */ int clacpy_(char *, integer *, integer *, complex 
 	    *, integer *, complex *, integer *, ftnlen);
-    static integer istart, kplusp, msglvl;
-    static real smlnum;
+    ARPACK_TLS integer istart, kplusp, msglvl;
+    ARPACK_TLS real smlnum;
     extern /* Subroutine */ int clartg_(complex *, complex *, real *, complex 
 	    *, complex *), claset_(char *, integer *, integer *, complex *, 
 	    complex *, complex *, integer *, ftnlen), second_(real *);

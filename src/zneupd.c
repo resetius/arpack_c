@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -309,26 +310,26 @@ static logical c_true = TRUE_;
     void z_div(doublecomplex *, doublecomplex *, doublecomplex *);
 
     /* Local variables */
-    static integer j, k, ih, jj, iq, np;
-    static doublecomplex vl[1];
-    static integer wr, ibd, ldh, ldq;
-    static doublereal sep;
-    static integer irz, mode;
-    static doublereal eps23;
-    static integer ierr;
-    static doublecomplex temp;
-    static integer iwev;
-    static char type__[6];
-    static integer ritz, iheig, ihbds;
-    static doublereal conds;
-    static logical reord;
+    ARPACK_TLS integer j, k, ih, jj, iq, np;
+    ARPACK_TLS doublecomplex vl[1];
+    ARPACK_TLS integer wr, ibd, ldh, ldq;
+    ARPACK_TLS doublereal sep;
+    ARPACK_TLS integer irz, mode;
+    ARPACK_TLS doublereal eps23;
+    ARPACK_TLS integer ierr;
+    ARPACK_TLS doublecomplex temp;
+    ARPACK_TLS integer iwev;
+    ARPACK_TLS char type__[6];
+    ARPACK_TLS integer ritz, iheig, ihbds;
+    ARPACK_TLS doublereal conds;
+    ARPACK_TLS logical reord;
     extern /* Subroutine */ int zscal_(integer *, doublecomplex *, 
 	    doublecomplex *, integer *);
-    static integer nconv;
+    ARPACK_TLS integer nconv;
     extern /* Double Complex */ VOID zdotc_(doublecomplex *, integer *, 
 	    doublecomplex *, integer *, doublecomplex *, integer *);
-    static doublereal rtemp;
-    static doublecomplex rnorm;
+    ARPACK_TLS doublereal rtemp;
+    ARPACK_TLS doublecomplex rnorm;
     extern /* Subroutine */ int zgeru_(integer *, integer *, doublecomplex *, 
 	    doublecomplex *, integer *, doublecomplex *, integer *, 
 	    doublecomplex *, integer *), zcopy_(integer *, doublecomplex *, 
@@ -348,7 +349,7 @@ static logical c_true = TRUE_;
 	    integer *, doublecomplex *, integer *, doublecomplex *, 
 	    doublecomplex *, integer *, doublecomplex *, integer *, ftnlen, 
 	    ftnlen);
-    static integer bounds, invsub, iuptri, msglvl, outncv, numcnv, ishift;
+    ARPACK_TLS integer bounds, invsub, iuptri, msglvl, outncv, numcnv, ishift;
     extern /* Subroutine */ int zlacpy_(char *, integer *, integer *, 
 	    doublecomplex *, integer *, doublecomplex *, integer *, ftnlen), 
 	    zlahqr_(logical *, logical *, integer *, integer *, integer *, 

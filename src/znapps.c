@@ -11,10 +11,11 @@
 */
 
 #include "f2c.h"
+#include "arpack_tls.h"
 
 /* Common Block Declarations */
 
-static struct {
+ARPACK_TLS struct {
     integer logfil, ndigit, mgetv0, msaupd, msaup2, msaitr, mseigt, msapps, 
 	    msgets, mseupd, mnaupd, mnaup2, mnaitr, mneigh, mnapps, mngets, 
 	    mneupd, mcaupd, mcaup2, mcaitr, mceigh, mcapps, mcgets, mceupd;
@@ -22,7 +23,7 @@ static struct {
 
 #define debug_1 debug_
 
-static struct {
+ARPACK_TLS struct {
     integer nopx, nbx, nrorth, nitref, nrstrt;
     real tsaupd, tsaup2, tsaitr, tseigt, tsgets, tsapps, tsconv, tnaupd, 
 	    tnaup2, tnaitr, tneigh, tngets, tnapps, tnconv, tcaupd, tcaup2, 
@@ -178,7 +179,7 @@ static integer c__1 = 1;
 {
     /* Initialized data */
 
-    static logical first = TRUE_;
+    ARPACK_TLS logical first = TRUE_;
 
     /* System generated locals */
     integer h_dim1, h_offset, v_dim1, v_offset, q_dim1, q_offset, i__1, i__2, 
@@ -191,17 +192,17 @@ static integer c__1 = 1;
     void d_cnjg(doublecomplex *, doublecomplex *);
 
     /* Local variables */
-    static doublereal c__;
-    static doublecomplex f, g;
-    static integer i__, j;
-    static doublecomplex r__, s, t;
-    static real t0, t1;
-    static doublecomplex h11, h21;
-    static integer jj;
-    static doublereal ulp, tst1;
-    static integer iend;
-    static doublereal unfl, ovfl;
-    static doublecomplex sigma;
+    ARPACK_TLS doublereal c__;
+    ARPACK_TLS doublecomplex f, g;
+    ARPACK_TLS integer i__, j;
+    ARPACK_TLS doublecomplex r__, s, t;
+    ARPACK_TLS real t0, t1;
+    ARPACK_TLS doublecomplex h11, h21;
+    ARPACK_TLS integer jj;
+    ARPACK_TLS doublereal ulp, tst1;
+    ARPACK_TLS integer iend;
+    ARPACK_TLS doublereal unfl, ovfl;
+    ARPACK_TLS doublecomplex sigma;
     extern /* Subroutine */ int zscal_(integer *, doublecomplex *, 
 	    doublecomplex *, integer *), zgemv_(char *, integer *, integer *, 
 	    doublecomplex *, doublecomplex *, integer *, doublecomplex *, 
@@ -217,8 +218,8 @@ static integer c__1 = 1;
     extern /* Subroutine */ int dlabad_(doublereal *, doublereal *);
     extern doublereal dlamch_(char *, ftnlen);
     extern /* Subroutine */ int second_(real *);
-    static integer istart, kplusp, msglvl;
-    static doublereal smlnum;
+    ARPACK_TLS integer istart, kplusp, msglvl;
+    ARPACK_TLS doublereal smlnum;
     extern /* Subroutine */ int zlacpy_(char *, integer *, integer *, 
 	    doublecomplex *, integer *, doublecomplex *, integer *, ftnlen), 
 	    zlartg_(doublecomplex *, doublecomplex *, doublereal *, 
